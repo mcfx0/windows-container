@@ -140,7 +140,7 @@ int wmain(int argc, wchar_t *argv[]) {
 		!wcscmp(argv[arg_index], L"--time")) {
 		timelimit = GetArg<uint32_t>(argv, arg_index, argc);
 		if (verbose)
-			fwprintf(stderr, L"Setting time limit to %" PRIuPTR "\n",
+			fwprintf(stderr, L"Setting ime limit to %" PRIuPTR "\n",
 				timelimit);
 		continue;
 	}
