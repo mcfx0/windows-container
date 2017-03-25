@@ -22,6 +22,7 @@
     <ProjectGuid>{497E4D3F-EBDB-476F-B03F-C9C5EE9DE141}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>binding_python</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

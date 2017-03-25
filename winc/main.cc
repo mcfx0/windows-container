@@ -75,6 +75,8 @@ int wmain(int argc, wchar_t *argv[]) {
   SpawnOptions o = {};
   bool verbose = false;
   bool listen = false;
+  bool timeout = false;
+  DWORD timelimit=INFINITE;
 
   int arg_index;
   for (arg_index = 1; arg_index < argc; ++arg_index) {
@@ -134,6 +136,14 @@ int wmain(int argc, wchar_t *argv[]) {
                  o.memory_limit);
       continue;
     }
+	if (!wcscmp(argv[arg_index], L"-t") ||
+		!wcscmp(argv[arg_index], L"--time")) {
+		timelimit = GetArg<uint32_t>(argv, arg_index, argc);
+		if (verbose)
+			fwprintf(stderr, L"Setting time limit to %" PRIuPTR "\n",
+				timelimit);
+		continue;
+	}
     if (!wcscmp(argv[arg_index], L"--affinity")) {
       o.processor_affinity = GetArg<uint32_t>(argv, arg_index, argc);
       if (verbose)
@@ -196,7 +206,10 @@ int wmain(int argc, wchar_t *argv[]) {
   if (rc != WINC_OK)
     PrintErrorAndExit(rc);
   // TODO(iceboy): In listen mode, events after process exit will be discarded
-  rc = t.WaitForProcess();
+  rc = t.WaitForProcess(timelimit,&timeout);
+  if (timeout) {
+	  fwprintf(stderr, L"Time limit exceeded\n");
+  }
   if (rc != WINC_OK)
     PrintErrorAndExit(rc);
   DWORD exit_code;

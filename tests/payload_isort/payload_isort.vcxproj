@@ -22,6 +22,7 @@
     <ProjectGuid>{F5CD1506-7046-4DDB-9487-5578A70ADA0C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>payload_isort</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
